@@ -24,12 +24,14 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+      env: 
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
     - run: npm config set registry https://registry.npm.taobao.org
     - run: npm install
     - run: npm run build --if-present
-    - run: git config --global user.email "zhoudeyou945@126.com"
-    - run: git config --global user.name "luffyZh"
-    - run: git remote set-url origin https://luffyZh:6a0ba252eed80421132bc4befa11dd376c0ebbaa@github.com/luffyZh/github-actions-demo
+    # - run: git config --global user.email "zhoudeyou945@126.com"
+    # - run: git config --global user.name "luffyZh"
+    # - run: git remote set-url origin https://luffyZh:6a0ba252eed80421132bc4befa11dd376c0ebbaa@github.com/luffyZh/github-actions-demo
     - run: npm run deploy
       env:
         CI: true
