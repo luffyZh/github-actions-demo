@@ -29,6 +29,7 @@ jobs:
     - run: npm run build --if-present
     - run: git config --global user.email "zhoudeyou945@126.com"
     - run: git config --global user.name "luffyZh"
+    - run: git remote set-url origin https://luffyZh:6a0ba252eed80421132bc4befa11dd376c0ebbaa@github.com/luffyZh/github-actions-demo
     - run: npm run deploy
       env:
         CI: true
