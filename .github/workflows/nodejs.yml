@@ -29,8 +29,8 @@ jobs:
           npm install
           npm run build
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@releases/v3  
-        with:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: build
+        run: |
+          git config --global user.name 'luffyZh'
+          git config --global user.email 'zhoudeyou945@126.com'
+          git remote set-url origin https://luffyZh:${{ secrets.ACCESS_TOKEN }}@github.com/luffyZh/github-actions-demo
+          npm run deploy
