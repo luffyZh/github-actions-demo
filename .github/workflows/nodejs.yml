@@ -20,12 +20,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Build
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-      env:
+      run: npm config set registry https://registry.npm.taobao.org
+      run: npm install && npm run build
+    - name: Deploy
+      uses: JamesIves/github-pages-deploy-action@releases/v3  
+      with:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         BRANCH: gh-pages
         FOLDER: build
-        BUILD_SCRIPT: npm install && npm run build
